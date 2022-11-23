@@ -25,7 +25,11 @@
 
     <!--menu.js를 로드 -->
     <script src="/js/menu.js"></script>
-    
+
+    <!-- SweetAlert2 이용하여 HTML alert 창 꾸미기 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script type="text/javascript" th:inline="javascript">
     var myBasket = new Array();
     //var listrow = document.getElementById('listrow');
@@ -63,8 +67,14 @@
       size=sizePriceArray[0];        
         temp=$(':input:radio[name='+temp_n+productname+']:checked').val(); 
        
-         pname=productname.concat(',',size,',',temp)    
-           alert(productname+" "+sizePriceArray[1]+" "+sizePriceArray[0]+" "+temp);
+         pname=productname.concat(',',size,',',temp)
+        Swal.fire(
+            productname +' 담기',
+            sizePriceArray[1]+" "+sizePriceArray[0]+" "+temp,
+            'success'
+        )
+        // Swal.fire(productname+" "+sizePriceArray[1]+" "+sizePriceArray[0]+" "+temp);
+           // alert(productname+" "+sizePriceArray[1]+" "+sizePriceArray[0]+" "+temp);
             addProductInfo(productname,sizePriceArray[1],sizePriceArray[0],temp);
                 
        }    
@@ -96,7 +106,7 @@
       
          if(checkResult!=-1){  //중복된 아이템일 경우          
           myBasket[checkResult].count+=1;   //개수 증가    
-          alert("중복아이템");
+          //alert("중복아이템");
          
            //var originPrice=myBasket[now].price/myBasket[now].count;//기본값 추출
            //myBasket[now].price=originPrice*myBasket[now].count;//가격 갱신          
@@ -195,7 +205,13 @@
                         //말이 다 끝나면 스프링에 전달 및 종료
                         if(event.results[i].isFinal){
                            
-                           alert(transcript);
+                           // alert(transcript);
+                           //  Swal.fire(transcript);
+                            Swal.fire(
+                                transcript+' 메뉴 찾기',
+                                '',
+                                'success'
+                            )
                            finalTranscripts+=transcript;                                                       
                            speechRecognizer.stop();
                            
@@ -213,15 +229,31 @@
                     //r.innerHTML=finalTranscripts+'<span style="color:#999">'+interimTranscripts+'</span>';
                 };                
                 speechRecognizer.onerror = function(event){
-                   alert("음성 인식 실패");
+                    Swal.fire(
+                        '음성 인식 실패',
+                        '정확한 발음으로 다시 말해주세요.',
+                        'warning'
+                    )
+                   // alert("음성 인식 실패");
                 };
             }   
-            else{            
-                alert("음성 인식 실패");
+            else{
+                Swal.fire(
+                    '음성 인식 실패',
+                    '정확한 발음으로 다시 말해주세요.',
+                    'warning'
+                )
             }
         }
    function loadDetailPage(productName){
-            
+
+       if (!document.getElementById('id0' + productName + '1')) {
+           Swal.fire(
+               productName+ '는 존재하지 않는 메뉴입니다.',
+               '정확한 발음으로 다시 말해주세요.',
+               'warning'
+           )
+       }
       var catename=document.getElementById('id0'+productName+'1').value;
       document.getElementById("nav_"+catename.toLowerCase() ).click();
       document.getElementById('id0'+productName).style.display='block';
@@ -287,18 +319,18 @@
 	    }, 1000);
 	}
 
-	window.onload = function () {
-	    let time_minutes = 0; // Value in minutes
-	    let time_seconds = 30; // Value in seconds
-
-	    let duration = time_minutes * 60 + time_seconds;
-	    let firstduration =duration
-	    element = document.querySelector('#count-down-timer');
-	    element.textContent = `${paddedFormat(time_minutes)}:${paddedFormat(time_seconds)}`;
-
-	    startCountDown(firstduration,--duration, element);
-	    
-	};
+	// window.onload = function () {
+	//     let time_minutes = 0; // Value in minutes
+	//     let time_seconds = 30; // Value in seconds
+    //
+	//     let duration = time_minutes * 60 + time_seconds;
+	//     let firstduration =duration
+	//     element = document.querySelector('#count-down-timer');
+	//     element.textContent = `${paddedFormat(time_minutes)}:${paddedFormat(time_seconds)}`;
+    //
+	//     startCountDown(firstduration,--duration, element);
+	//
+	// };
    
     </script>
     
@@ -704,7 +736,7 @@
                }
              });
         */
-        modal.click();        
+        modal.click();
        loadDetailPage(msgs);
        
        }
