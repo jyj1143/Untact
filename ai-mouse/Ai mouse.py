@@ -7,8 +7,8 @@ import pyautogui
 
 ############################
 # wCam, hCam =  680 ,580
-wCam, hCam =  500, 390
-# wCam, hCam =  340 ,250
+# wCam, hCam =  500, 390
+wCam, hCam =  340 ,250
 frameR = 50 # Frame Reduction
 smoothening = 7
 ############################
@@ -23,7 +23,7 @@ cap.set(3, wCam)
 cap.set(3, hCam)
 detector = htm.handDetector(maxHands=1)
 wScr, hScr = autopy.screen.size()
-#print(wScr, hScr)
+print(wScr, hScr)
 
 while True:
     success, img = cap.read()
@@ -63,7 +63,7 @@ while True:
             if length < 39:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]),
                            15, (0, 255, 0), cv2.FILLED)
-                pyautogui.click( interval=0.75)          
+                pyautogui.click( interval=0.2)          
                 # autopy.mouse.click()
                 # time.sleep(0.5)
         # 9. Find Distance between Fingers
@@ -74,5 +74,6 @@ while True:
     cv2.putText(img, str(int(fps)), (40, 50), cv2.FONT_HERSHEY_PLAIN, 3,
                 (255, 0, 0), 3)
 
-    cv2.imshow("Img", img)
+    resize_img = cv2.resize(img, (300, 300))
+    cv2.imshow("Img", resize_img)
     cv2.waitKey(1)
