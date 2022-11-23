@@ -16,7 +16,10 @@
     <!-- 웹 폰트 로드-->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/recommend.css">   
+    <link rel="stylesheet" href="/css/recommend.css">
+
+    <!-- SweetAlert2 이용하여 HTML alert 창 꾸미기 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <th:block th:replace="/cafe/header.html"></th:block>
     </head>
 
@@ -97,14 +100,36 @@
                    document.getElementById("car_num_set").value=data;
                 },
                 error : function(a, b, c) {
-                   alert("error");
+                   //alert("error");
                 }
              });
-             
-              
-             
+
+
           });
        }
+
+        let timerInterval
+        Swal.fire({
+            title: '번호판 인식중',
+            html: 'I will close in <b></b> milliseconds.',
+            timer: 12000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
     }
     
     

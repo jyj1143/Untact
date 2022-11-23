@@ -319,37 +319,38 @@
 	    }, 1000);
 	}
 
-	// window.onload = function () {
-	//     let time_minutes = 0; // Value in minutes
-	//     let time_seconds = 30; // Value in seconds
-    //
-	//     let duration = time_minutes * 60 + time_seconds;
-	//     let firstduration =duration
-	//     element = document.querySelector('#count-down-timer');
-	//     element.textContent = `${paddedFormat(time_minutes)}:${paddedFormat(time_seconds)}`;
-    //
-	//     startCountDown(firstduration,--duration, element);
-	//
-	// };
+	 window.onload = function () {
+	     let time_minutes = 0; // Value in minutes
+	     let time_seconds = 30; // Value in seconds
+    
+	     let duration = time_minutes * 60 + time_seconds;
+	     let firstduration =duration
+	     element = document.querySelector('#count-down-timer');
+	     element.textContent = `${paddedFormat(time_minutes)}:${paddedFormat(time_seconds)}`;
+    
+	     startCountDown(firstduration,--duration, element);
+	
+	 };
    
     </script>
     
 </head>
 
-<body>
+<body style= "margin-top: 10px;">
 <h1 class="text-center"  style="color:red" id="count-down-timer"></h1>
    <!-- NAVI 바 ---------------->
  
      <table class="nav">
         <tr>
            
-           <td colspan="1" th:text="${user.userId}"></td>
-            <td colspan="3" id="nav_main">STARUS</td>
+           <td colspan="3" th:text="${user.userId}"></td>
+           
+            <td colspan="1" id="nav_main">STARUS</td>
             
         </tr>
         <tr id="nav_sub">
-            <td colspan="1" id="nav_category_bev">음료(Beverage)</td>
-            <td colspan="3" id="nav_user">이전 구매 및 추천</td>       
+            <td colspan="3" id="nav_category_bev">음료(Beverage)</td>
+            <td colspan="1" id="nav_user">이전 구매 및 추천</td>       
                
         </tr>
         <tr id="nav_detail_bev">
@@ -359,8 +360,9 @@
             <td id="nav_frappuccino">FRAPPUCCINO</td>
         </tr>       
         <tr id="nav_detail_user">
-           <td th:if="!${user.userId.toString().equals('비회원')}" id="nav_beforebuy">BEFORE</td>
-           <td id="nav_recommend">RECOMMEND</td>
+           <!--  <td th:if="!${user.userId.toString().equals('비회원')}" id="nav_beforebuy">BEFORE</td> -->
+           <td id="nav_beforebuy" colspan="3">BEFORE</td>
+           <td id="nav_recommend" colspan="3">RECOMMEND</td>
         </tr>
     </table>        
     <!-- 메뉴 -------------------->
@@ -745,7 +747,7 @@
       modal.classList.toggle('show');
      
       if (modal.classList.contains('show')) {
-        body.style.overflow = 'hidden';
+        //body.style.overflow = 'hidden';
       }
       
       startVoice();
@@ -757,7 +759,7 @@
         modal.classList.toggle('show');
 
         if (!modal.classList.contains('show')) {
-          body.style.overflow = 'auto';
+          //body.style.overflow = 'auto';
         }
       }
     });

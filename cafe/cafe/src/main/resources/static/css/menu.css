@@ -9,7 +9,7 @@ body {
     height: 2150px;
     margin: 100px;
     font-family: 'Noto Sans KR', sans-serif;
-    border: 1px solid #ddd;
+    
     
 }
 ul.pro{
@@ -89,7 +89,7 @@ li{
 
  #nav_category_bev {
      border-bottom: 1px solid #999;
-     height: 50px;
+     height: 150px;
  }
 
  #nav_category_bev.underline_a {
@@ -99,7 +99,7 @@ li{
 
  #nav_user {
      border-bottom: 1px solid #999;
-     height: 50px;
+     height: 150px;
  }
 
  #nav_user.underline_b {
@@ -136,12 +136,12 @@ li{
  }
 
  #nav_detail_bev {
-     height: 50px;
+     height: 150px;
      display: none;
  }
 
  #nav_detail_user {
-     height: 50px;
+     height: 150px;
      display: none;
  }
 
