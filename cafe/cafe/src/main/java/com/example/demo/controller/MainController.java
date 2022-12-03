@@ -425,84 +425,83 @@ public class MainController {
 	public String ImgSaveTest(Model model, @RequestParam HashMap<Object, Object> param,
 			@RequestParam("imgSrc") String binaryData,HttpSession session) throws Exception {
 			
-		String urlstr="http://514d-34-105-64-58.ngrok.io";
+		String urlstr="http://8331-34-147-40-140.ngrok.io";
 		FileOutputStream stream = null;
 		try{System.out.println("binary file   "  + binaryData);
-			if(binaryData == null || binaryData.trim().equals("")) {
-				throw new Exception();
-			}
-			binaryData = binaryData.replaceAll("data:image/png;base64,", "");
-			byte[] file1 = Base64.decodeBase64(binaryData);
-			String fileName=  UUID.randomUUID().toString();
+//			if(binaryData == null || binaryData.trim().equals("")) {
+//				throw new Exception();
+//			}
+//			binaryData = binaryData.replaceAll("data:image/png;base64,", "");
+//			byte[] file1 = Base64.decodeBase64(binaryData);
+//			String fileName=  UUID.randomUUID().toString();
+//
+//			stream = new FileOutputStream("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\img\\"
+//					+"car_number"+".png");
+//			stream.write(file1);
+//			stream.close();
+//			System.out.println("캡처 저장 "+fileName);
+//
+//
+//
+//			File file = new File("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\img\\"
+//					+"car_number"+".png");
+//			byte[] fileContent = Files.readAllBytes(file.toPath());
+//			System.out.println("byte:"+ fileContent);
+//
+//			String encoded = Base64Utils.encodeToString(fileContent);
+//			JSONObject jObject=new JSONObject();
+//			jObject.put("Test", encoded); //JSON에 값 입력
+//
+//			String inputLine=null;
+//			StringBuffer stringBuffer=new StringBuffer();
+//			URL url=new URL(urlstr); //URL객체 생성
+//
+//
+//
+//			System.out.println(conn.toString());
+//			conn.setDoOutput(true);
+//			conn.setDoInput(true);
+//			conn.setRequestMethod("POST");
+//			conn.setRequestProperty("Content-Type", "application/json");
+//			conn.setRequestProperty("Accept-Charset", "UTF-8");
+//			conn.setConnectTimeout(1000000000);
+//			conn.setReadTimeout(1000000000);
+//
+//			//데이터 전송
+//			BufferedWriter bWriter=new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(),"UTF-8"));
+//			bWriter.write(jObject.toString());
+//			bWriter.flush();
+//
+//
+//			//전송된 결과를 읽어옴
+//			BufferedReader bReader=new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+//			while((inputLine=bReader.readLine())!=null){
+//				stringBuffer.append(inputLine);
+//			}
+//
+//			System.out.println(stringBuffer);
+//
+//			bWriter.flush();
+//			bWriter.close();
+//			bReader.close();
+//			conn.disconnect();
+//
+//
+//
+//			// 가장 큰 JSONObject를 가져옵니다.
+//			String jsonText =  stringBuffer.toString();
+//
+//			JSONParser parser = new JSONParser();
+//
+//			JSONObject obj = null;
+//			obj = (JSONObject)parser.parse(jsonText);
+//			System.out.println(obj.get("car_num"));
+//
+//			model.addAttribute("car_num", obj.get("car_num"));
+//			String car_num= (String)obj.get("car_num");
 
-			stream = new FileOutputStream("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\img\\"
-					+"car_number"+".png");
-			stream.write(file1);
-			stream.close();
-			System.out.println("캡처 저장 "+fileName);
 
-
-
-			File file = new File("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\img\\"
-					+"car_number"+".png");
-			byte[] fileContent = Files.readAllBytes(file.toPath());
-			System.out.println("byte:"+ fileContent);
-
-			String encoded = Base64Utils.encodeToString(fileContent);
-			JSONObject jObject=new JSONObject();
-			jObject.put("Test", encoded); //JSON에 값 입력
-
-			String inputLine=null;
-			StringBuffer stringBuffer=new StringBuffer();
-			URL url=new URL(urlstr); //URL객체 생성
-
-
-			HttpURLConnection conn=(HttpURLConnection)url.openConnection(); //url주소를 가지고 Http 커넥션 객체 생성
-
-			System.out.println(conn.toString());
-			conn.setDoOutput(true);
-			conn.setDoInput(true);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
-			conn.setRequestProperty("Accept-Charset", "UTF-8");
-			conn.setConnectTimeout(1000000000);
-			conn.setReadTimeout(1000000000);
-
-			//데이터 전송
-			BufferedWriter bWriter=new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(),"UTF-8"));
-			bWriter.write(jObject.toString());
-			bWriter.flush();
-
-
-			//전송된 결과를 읽어옴
-			BufferedReader bReader=new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
-			while((inputLine=bReader.readLine())!=null){
-				stringBuffer.append(inputLine);
-			}
-
-			System.out.println(stringBuffer);
-
-			bWriter.flush();
-			bWriter.close();
-			bReader.close();
-			conn.disconnect();
-
-
-
-			// 가장 큰 JSONObject를 가져옵니다.
-			String jsonText =  stringBuffer.toString();
-
-			JSONParser parser = new JSONParser();
-
-			JSONObject obj = null;
-			obj = (JSONObject)parser.parse(jsonText);
-			System.out.println(obj.get("car_num"));
-
-			model.addAttribute("car_num", obj.get("car_num"));
-			String car_num= (String)obj.get("car_num");
-
-
-//			String car_num= "18세1004";
+			String car_num= "19세1004";
 	       //sendJSON()
 	           
 	           Iterable<Customer> cusList = CustomerRepo.findAll();
@@ -611,66 +610,66 @@ public class MainController {
 	        		   
 	     	          
 
-	     	           String inputLine2=null;
-	     	           StringBuffer stringBuffer2=new StringBuffer();
-	     	           URL url2=new URL(urlstr+"/recommendation"); //URL객체 생성
-
-
-	     	           HttpURLConnection conn2=(HttpURLConnection)url2.openConnection(); //url주소를 가지고 Http 커넥션 객체 생성
-
-	     	           System.out.println(conn2.toString());
-	     	           conn2.setDoOutput(true);
-	     	           conn2.setDoInput(true);
-	     	           conn2.setRequestMethod("POST");
-	     	           conn2.setRequestProperty("Content-Type", "application/json");
-	     	           conn2.setRequestProperty("Accept-Charset", "UTF-8");
-	     	           conn2.setConnectTimeout(1000000000);
-	     	           conn2.setReadTimeout(1000000000);
-
-	     	         //데이터 전송
-	     	           BufferedWriter bWriter2=new BufferedWriter(new OutputStreamWriter(conn2.getOutputStream(),"UTF-8"));
-	     	           bWriter2.write(before_buy_jsonObj.toString());
-	     	           bWriter2.flush();
-
-
-	     	           //전송된 결과를 읽어옴
-	     	           BufferedReader bReader2=new BufferedReader(new InputStreamReader(conn2.getInputStream(),"UTF-8"));
-	     	           while((inputLine2=bReader2.readLine())!=null){
-	     	               stringBuffer2.append(inputLine2);
-	     	           }
-
-	     	           System.out.println(stringBuffer2);
-
-	     	           bWriter2.flush();
-	     	           bWriter2.close();
-	     	           bReader2.close();
-	     	           conn2.disconnect();
-
-
-
-	     		        // 가장 큰 JSONObject를 가져옵니다.
-	    	           String jsonText2 =  stringBuffer2.toString();
-
-	    	           JSONParser parser2 = new JSONParser();
-
-	    	           JSONObject obj2 = null;
-	    	           obj2 = (JSONObject)parser2.parse(jsonText2);
-	    	           System.out.println("***************최종 추천**************");
-	    	           System.out.println(obj2.get("pca_reco1"));
-	    	           System.out.println(obj2.get("pca_reco2"));
-	    	           System.out.println(obj2.get("pca_reco3"));
-	    	           System.out.println(obj2.get("order2vec_reco1"));
-	    	           System.out.println(obj2.get("order2vec_reco2"));
-	    	           System.out.println(obj2.get("order2vec_reco3"));
-	    	           System.out.println(obj2.get("pca_reco"));
-	    	           System.out.println(obj2.get("order2vec_reco"));
-
-	    	           String jsonStr = obj2.toString();
-	    	           File jsonFile = new File("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\json\\"+car_num+".json");
-
-	    	           BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile));
-	    	           writer.write(jsonStr);
-	    	           writer.close();
+//	     	           String inputLine2=null;
+//	     	           StringBuffer stringBuffer2=new StringBuffer();
+//	     	           URL url2=new URL(urlstr+"/recommendation"); //URL객체 생성
+//
+//
+//	     	           HttpURLConnection conn2=(HttpURLConnection)url2.openConnection(); //url주소를 가지고 Http 커넥션 객체 생성
+//
+//	     	           System.out.println(conn2.toString());
+//	     	           conn2.setDoOutput(true);
+//	     	           conn2.setDoInput(true);
+//	     	           conn2.setRequestMethod("POST");
+//	     	           conn2.setRequestProperty("Content-Type", "application/json");
+//	     	           conn2.setRequestProperty("Accept-Charset", "UTF-8");
+//	     	           conn2.setConnectTimeout(1000000000);
+//	     	           conn2.setReadTimeout(1000000000);
+//
+//	     	         //데이터 전송
+//	     	           BufferedWriter bWriter2=new BufferedWriter(new OutputStreamWriter(conn2.getOutputStream(),"UTF-8"));
+//	     	           bWriter2.write(before_buy_jsonObj.toString());
+//	     	           bWriter2.flush();
+//
+//
+//	     	           //전송된 결과를 읽어옴
+//	     	           BufferedReader bReader2=new BufferedReader(new InputStreamReader(conn2.getInputStream(),"UTF-8"));
+//	     	           while((inputLine2=bReader2.readLine())!=null){
+//	     	               stringBuffer2.append(inputLine2);
+//	     	           }
+//
+//	     	           System.out.println(stringBuffer2);
+//
+//	     	           bWriter2.flush();
+//	     	           bWriter2.close();
+//	     	           bReader2.close();
+//	     	           conn2.disconnect();
+//
+//
+//
+//	     		        // 가장 큰 JSONObject를 가져옵니다.
+//	    	           String jsonText2 =  stringBuffer2.toString();
+//
+//	    	           JSONParser parser2 = new JSONParser();
+//
+//	    	           JSONObject obj2 = null;
+//	    	           obj2 = (JSONObject)parser2.parse(jsonText2);
+//	    	           System.out.println("***************최종 추천**************");
+//	    	           System.out.println(obj2.get("pca_reco1"));
+//	    	           System.out.println(obj2.get("pca_reco2"));
+//	    	           System.out.println(obj2.get("pca_reco3"));
+//	    	           System.out.println(obj2.get("order2vec_reco1"));
+//	    	           System.out.println(obj2.get("order2vec_reco2"));
+//	    	           System.out.println(obj2.get("order2vec_reco3"));
+//	    	           System.out.println(obj2.get("pca_reco"));
+//	    	           System.out.println(obj2.get("order2vec_reco"));
+//
+//	    	           String jsonStr = obj2.toString();
+//	    	           File jsonFile = new File("C:\\Users\\home\\Desktop\\새 폴더 (3)\\새 폴더\\cafe\\cafe\\src\\main\\resources\\static\\json\\"+car_num+".json");
+//
+//	    	           BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile));
+//	    	           writer.write(jsonStr);
+//	    	           writer.close();
 
 
 					   return car_num + " (회원)";
